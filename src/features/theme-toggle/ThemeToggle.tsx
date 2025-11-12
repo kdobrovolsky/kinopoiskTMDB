@@ -1,0 +1,22 @@
+import s from './ThemeToggle.module.css';
+import {useThemeContext} from "@/common/components/theme/themeProvider/themeProvider.tsx";
+
+export const ThemeToggle: React.FC = () => {
+    const { isDark, toggleTheme } = useThemeContext();
+
+    return (
+        <button
+            onClick={toggleTheme}
+            className={s.themeToggle}
+
+            title={isDark ? 'Светлая тема' : 'Темная тема'}
+        >
+      <span className={s.icon}>
+        {isDark ? '☀️' : '🌙'}
+      </span>
+            <span className={s.text}>
+        {isDark}
+      </span>
+        </button>
+    );
+};

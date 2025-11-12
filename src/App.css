@@ -1,42 +1,76 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* app/styles/reset.css */
+/* Modern CSS Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+* {
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html, body {
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-.card {
-  padding: 2em;
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
 }
 
-.read-the-docs {
-  color: #888;
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* app/styles/globals.css */
+:root {
+  /* Светлая тема (по умолчанию) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #000000;
+  --text-secondary: #6c757d;
+  --header-bg: #032541;
+  --accent-color: #01b4e4;
+  --border-color: #dee2e6;
+}
+
+[data-theme="dark"] {
+  /* Темная тема */
+  --bg-primary: #0d253f;
+  --bg-secondary: #1c2e44;
+  --text-primary: #ffffff;
+  --text-secondary: #adb5bd;
+  --header-bg: #061b2e;
+  --accent-color: #90cea1;
+  --border-color: #2d4263;
+}
+
+/* Применяем переменные */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Пример для карточек фильмов */
+.movie-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+/* Пример для кнопок */
+.button {
+  background-color: var(--accent-color);
+  color: white;
 }

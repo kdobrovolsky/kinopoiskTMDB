@@ -1,0 +1,84 @@
+/* widgets/header/Header.module.css */
+.container {
+    background-color: #032541;
+    padding: 0 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 12px;
+    transition: opacity 0.2s;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.logoText {
+    color: #01b4e4;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 24px;
+}
+
+.list li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.list li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.list li a.active {
+    background-color: #01b4e4;
+    color: white;
+    font-weight: 600;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .headerContent {
+        height: 60px;
+        padding: 0 16px;
+    }
+
+    .logoText {
+        display: none;
+    }
+
+    .list {
+        gap: 12px;
+    }
+
+    .list li a {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}

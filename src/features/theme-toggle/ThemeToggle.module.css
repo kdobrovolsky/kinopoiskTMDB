@@ -1,0 +1,113 @@
+/* features/theme-toggle/ThemeToggle.module.css */
+.themeToggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 12px 12px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.themeToggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.themeToggle:hover::before {
+    left: 100%;
+}
+
+.themeToggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.themeToggle:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+}
+
+.themeToggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(1, 180, 228, 0.5);
+}
+
+.icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.themeToggle:hover .icon {
+    transform: rotate(15deg);
+}
+
+.text {
+    display: none;
+    transition: color 0.3s ease;
+    font-weight: 600;
+}
+
+/* Анимация переключения */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.themeToggle.animating .icon {
+    animation: pulse 0.3s ease;
+}
+
+/* Десктопная версия */
+@media (min-width: 768px) {
+    .text {
+        display: inline;
+    }
+
+    .themeToggle {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .icon {
+        font-size: 16px;
+    }
+}
+
+/* Темная тема - дополнительные стили если нужно */
+[data-theme="dark"] .themeToggle {
+    background: rgba(144, 206, 161, 0.1);
+    border-color: rgba(144, 206, 161, 0.3);
+}
+
+[data-theme="dark"] .themeToggle:hover {
+    background: rgba(144, 206, 161, 0.15);
+}
+
+/* Светлая тема - дополнительные стили если нужно */
+[data-theme="light"] .themeToggle {
+    background: rgba(3, 37, 65, 0.1);
+    border-color: rgba(3, 37, 65, 0.3);
+}
+
+[data-theme="light"] .themeToggle:hover {
+    background: rgba(3, 37, 65, 0.15);
+}
