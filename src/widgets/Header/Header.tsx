@@ -16,12 +16,9 @@ export const Header = () => {
     return(
         <header className={s.container}>
             <div className={s.headerContent}>
-                {/* Логотип как отдельный элемент, а не пункт меню */}
                 <NavLink to={Path.Main} className={s.logo}>
                     <TMDBLogo />
                 </NavLink>
-
-                {/* Навигационное меню */}
                 <nav>
                     <ul className={s.list}>
                         {navItems.map(item => (

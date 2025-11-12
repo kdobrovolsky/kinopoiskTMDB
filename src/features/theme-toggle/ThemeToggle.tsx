@@ -14,9 +14,6 @@ export const ThemeToggle: React.FC = () => {
       <span className={s.icon}>
         {isDark ? '☀️' : '🌙'}
       </span>
-            <span className={s.text}>
-        {isDark}
-      </span>
         </button>
     );
 };
