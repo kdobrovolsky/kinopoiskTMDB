@@ -2,14 +2,14 @@
     min-height: 100vh;
 }
 
+/* Welcome Section */
 .welcomeSection {
     background-size: cover;
     background-position: center;
-    height: 800px;
+    height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     position: relative;
 }
 
@@ -19,74 +19,53 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.welcomeSection {
-    background-size: cover;
-    background-position: center;
-    height: 800px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* УБЕРИ color: white отсюда */
-    position: relative;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .welcomeContent {
     position: relative;
-    z-index: 1;
-    text-align: left;
-    color: white; /* 👈 ДОБАВЬ СЮДА */
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    padding: 0 2rem;
 }
 
 .title {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    color: inherit; /* 👈 Наследует цвет от welcomeContent */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .subtitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-    opacity: 0.9;
-    color: inherit; /* 👈 Наследует цвет от welcomeContent */
-}
-
-.mainContent {
-    padding: 3rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.mainTitle {
-    font-size: 2rem;
+    font-size: 1.25rem;
     margin-bottom: 2rem;
-    color: var(--text-primary);
+    opacity: 0.9;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Search Form */
 .searchForm {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
-    z-index: 2; /* 👈 Добавь это */
-    position: relative; /* 👈 И это */
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .searchInput {
+    flex: 1;
     padding: 0.75rem 1rem;
     border: none;
-    border-radius: 15px;
+    border-radius: 8px;
     font-size: 1rem;
-    background: rgba(255, 255, 255, 0.9);
-    min-width: 300px;
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .searchInput:focus {
     outline: none;
     background: white;
+    box-shadow: 0 0 0 3px rgba(70, 70, 147, 0.3);
 }
 
 .searchButton {
@@ -94,25 +73,65 @@
     background: #464693;
     color: white;
     border: none;
-    border-radius: 15px;
+    border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-}
-.searchButton:disabled {
-    padding: 0.75rem 1.5rem;
-    background: #2b2b42;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    font-weight: 600;
-    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
+.searchButton:hover:not(:disabled) {
+    background: #3a3a7d;
+}
+
+.searchButton:disabled {
+    background: #2b2b42;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Main Content */
+.mainContent {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.viewMoreButton {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.viewMoreButton:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Movies Grid */
+/* Movies Grid */
 .moviesGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1.5rem;
-    margin-top: 2rem;
 }
 
 .movieCard {
@@ -120,76 +139,144 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
 }
 
 .movieCard:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
 }
 
 .moviePoster {
     width: 100%;
-    height: 200px;
+    height: 230px;
     object-fit: cover;
-    display: block;
+    transition: filter 0.3s ease;
+}
+
+.movieCard:hover .moviePoster {
+    filter: brightness(0.7);
 }
 
 .posterPlaceholder {
     width: 100%;
-    height: 300px;
+    height: 230px;
     background: var(--bg-tertiary);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.movieCard:hover .posterPlaceholder {
+    background: var(--border-color);
+}
+
+/* Рейтинг поверх картинки */
+.movieRatingOverlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.movieCard:hover .movieRatingOverlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.movieRatingOverlay::before {
+    content: '⭐';
+    font-size: 0.8rem;
+}
+
+/* Цвета рейтинга */
+.movieRatingOverlay.high {
+    background: rgba(0, 179, 0, 0.9);
+}
+
+.movieRatingOverlay.medium {
+    background: rgba(255, 165, 0, 0.9);
+}
+
+.movieRatingOverlay.low {
+    background: rgba(255, 77, 77, 0.9);
+}
+
+.movieInfo {
+    padding: 1rem;
 }
 
 .movieTitle {
-    padding: 1rem 1rem 0.5rem;
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin: 0;
+    margin: 0 0 0.5rem 0;
     line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
+/* Старый рейтинг (можно скрыть или оставить) */
 .movieRating {
-    padding: 0 1rem 1rem;
-    margin: 0;
-    color: var(--text-secondary);
+    color: var(--accent-color);
+    font-weight: 600;
     font-size: 0.9rem;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
-/* Адаптивность */
+.movieCard:hover .movieRating {
+    opacity: 0; /* Скрываем старый рейтинг при наведении */
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .moviesGrid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 1rem;
     }
 
     .moviePoster,
     .posterPlaceholder {
-        height: 250px;
+        height: 210px;
+    }
+
+    .movieRatingOverlay {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
     }
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-    .welcomeSection {
-        height: 600px;
+@media (max-width: 480px) {
+    .moviesGrid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .title {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 1.25rem;
-    }
-
-    .mainContent {
-        padding: 2rem 1rem;
+    .movieRatingOverlay {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.3rem 0.5rem;
+        font-size: 0.75rem;
     }
 }
