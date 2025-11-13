@@ -1,5 +1,7 @@
-import { Route, Routes } from "react-router-dom";
+
 import {CategoryMovies, Favorites, FilteredMovies, Main, Search} from "@/pages";
+import { Route, Routes } from "react-router-dom";
+import {NotFound} from "@/pages/NotFound/NotFound.tsx";
 
 export const Path = {
     Main: '/',
@@ -17,6 +19,6 @@ export const Routing = () => (
         <Route path={Path.FilteredMovies} element={<FilteredMovies />} />
         <Route path={Path.Search} element={<Search />} />
         <Route path={Path.Favorites} element={<Favorites />} />
-        {/*<Route path={Path.NotFound} element={<NotFound />} />*/}
+        <Route path={Path.NotFound} element={<NotFound />} />
     </Routes>
 )
