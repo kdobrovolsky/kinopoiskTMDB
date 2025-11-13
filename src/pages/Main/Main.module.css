@@ -1,0 +1,119 @@
+.container {
+    min-height: 100vh;
+}
+
+.welcomeSection {
+    background-size: cover;
+    background-position: center;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.welcomeSection {
+    background-size: cover;
+    background-position: center;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* УБЕРИ color: white отсюда */
+    position: relative;
+}
+
+.welcomeContent {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    color: white; /* 👈 ДОБАВЬ СЮДА */
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: inherit; /* 👈 Наследует цвет от welcomeContent */
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 0.9;
+    color: inherit; /* 👈 Наследует цвет от welcomeContent */
+}
+
+.mainContent {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mainTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.searchForm {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    z-index: 2; /* 👈 Добавь это */
+    position: relative; /* 👈 И это */
+}
+
+.searchInput {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    min-width: 300px;
+}
+
+.searchInput:focus {
+    outline: none;
+    background: white;
+}
+
+.searchButton {
+    padding: 0.75rem 1.5rem;
+    background: #464693;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .welcomeSection {
+        height: 600px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.25rem;
+    }
+
+    .mainContent {
+        padding: 2rem 1rem;
+    }
+}
