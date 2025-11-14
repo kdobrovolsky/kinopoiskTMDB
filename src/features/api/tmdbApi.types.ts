@@ -61,3 +61,22 @@ export type FavoriteMovie = {
   posterUrl: string | null;
   voteAverage: number;
 };
+
+
+export type TMDBUpcomingResponse = {
+  dates: {
+    maximum: string;
+    minimum: string;
+  };
+  page: number;
+  results: TMDBMovie[];
+  total_pages: number;
+  total_results: number;
+};
+
+export const categoriesTitle: Record<string, string> = {
+  'popular': 'Popular Movies',
+  'top-rated': 'Top Rated Movies',
+  'upcoming': 'Upcoming Movies',
+  'now-playing': 'Now Playing Movies'
+};

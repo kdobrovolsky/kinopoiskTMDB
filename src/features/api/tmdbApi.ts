@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type {TMDBMoviesResponse} from "@/features/api/tmdbApi.types.ts";
+import type {TMDBMoviesResponse, TMDBUpcomingResponse} from "@/features/api/tmdbApi.types.ts";
 
 export const tmdbApi = createApi({
   reducerPath: 'tmdbApi',
@@ -15,8 +15,17 @@ export const tmdbApi = createApi({
     fetchPopularMovies: build.query<TMDBMoviesResponse, void>({
       query: () => `movie/popular`,
     }),
+    fetchTopRated: build.query<TMDBMoviesResponse, void>({
+      query: () => `movie/top_rated`,
+    }),
+    fetchUpcoming: build.query<TMDBUpcomingResponse, void>({
+      query: () => `movie/upcoming`,
+    }),
+    fetchNowPlaying: build.query<TMDBUpcomingResponse, void>({
+      query: () => `movie/now_playing`,
+    }),
   }),
 });
 
 
-export const {useFetchPopularMoviesQuery} = tmdbApi
+export const {useFetchPopularMoviesQuery,useFetchNowPlayingQuery,useFetchTopRatedQuery,useFetchUpcomingQuery} = tmdbApi
