@@ -8,8 +8,11 @@ import s from "./CategoryMovies.module.css";
 import {useNavigate} from "react-router-dom";
 import {useParams} from "react-router";
 import {categoriesTitle} from "@/features/api/tmdbApi.types.ts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Pagination} from "@/common";
+
+import {MOVIE_CATEGORIES} from "@/features";
+import {RATING_THRESHOLDS} from "@/shared";
 
 export const CategoryMovies = () => {
 
@@ -17,10 +20,10 @@ export const CategoryMovies = () => {
     const {type = 'popular'} = useParams()
     const [page, setPage] = useState(1);
 
-    const {data:dataPopular} = useFetchPopularMoviesQuery(page)
-    const {data:dataNowPlaying} = useFetchNowPlayingQuery(page)
-    const {data:dataUpcoming} = useFetchUpcomingQuery(page)
-    const {data:dataTopRated} = useFetchTopRatedQuery(page)
+    const {data:dataPopular} = useFetchPopularMoviesQuery(page,{skip: type !== 'popular'});
+    const {data:dataNowPlaying} = useFetchNowPlayingQuery(page,{skip: type !== 'dataNowPlaying'})
+    const {data:dataUpcoming} = useFetchUpcomingQuery(page,{skip: type !== 'upcoming'})
+    const {data:dataTopRated} = useFetchTopRatedQuery(page,{skip: type !== 'dataTopRated'})
 
 
     let data;
@@ -41,62 +44,30 @@ export const CategoryMovies = () => {
             data = dataPopular
     }
 
-    console.log(`total pages${data?.total_pages} `)
-    console.log(`total pages${data?.total_results} `)
 
-    const handleClickPopular = () => {
-        navigate("/category/popular");
-    }
 
-    const handleClickTopRated = () => {
-        navigate("/category/top-rated");
-    }
-
-    const handleClickUpcomingMovies = () => {
-        navigate("/category/upcoming");
-    }
-    const handleClickNowPlayingMovies = () => {
-        navigate("/category/now-playing");
-    }
-
+    useEffect(() => {
+        setPage(1)
+    }, [type]);
 
     return (
         <div className={s.container}>
+
             <nav className={s.navigation}>
+            {MOVIE_CATEGORIES.map((category) => (
                 <button
-                    onClick={handleClickPopular}
-                    className={`${s.navButton} ${type === 'popular' ? s.active : ''}`}
-                >
-                    Popular Movies
+                key={category.key}
+                onClick={() => navigate(`/category/${category.key}`)}
+                className={`${s.navButton} ${type === category.key ? s.active: ''}`}>
+                    {category.label}
                 </button>
-                <button
-                    onClick={handleClickTopRated}
-                    className={`${s.navButton} ${type === 'top-rated' ? s.active : ''}`}
-                >
-                    Top Rated Movies
-                </button>
-                <button
-                    onClick={handleClickUpcomingMovies}
-                    className={`${s.navButton} ${type === 'upcoming' ? s.active : ''}`}
-                >
-                    Upcoming Movies
-                </button>
-                <button
-                    onClick={handleClickNowPlayingMovies}
-                    className={`${s.navButton} ${type === 'now-playing' ? s.active : ''}`}
-                >
-                    Now Playing Movies
-                </button>
+            ))}
             </nav>
 
-            {/* Заголовок категории */}
             <h1 className={s.categoryTitle}>{categoriesTitle[type]}</h1>
-
-            {/* Сетка фильмов */}
             <div className={s.moviesGrid}>
                 {data?.results.map((movie) => (
                     <article key={movie.id} className={s.movieCard}>
-                        {/* Постер фильма */}
                         {movie.poster_path ? (
                             <img
                                 src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -110,17 +81,14 @@ export const CategoryMovies = () => {
                             </div>
                         )}
 
-                        {/* Рейтинг */}
                         <div
                             className={`${s.movieRatingOverlay} ${
-                                movie.vote_average >= 7 ? s.high :
-                                    movie.vote_average >= 5 ? s.medium : s.low
+                                movie.vote_average >= RATING_THRESHOLDS.HIGH ? s.high :
+                                    movie.vote_average >= RATING_THRESHOLDS.MEDIUM ? s.medium : s.low
                             }`}
                         >
                             {movie.vote_average.toFixed(1)}
                         </div>
-
-                        {/* Информация о фильме */}
                         <div className={s.movieInfo}>
                             <h3 className={s.movieTitle}>{movie.title}</h3>
                         </div>

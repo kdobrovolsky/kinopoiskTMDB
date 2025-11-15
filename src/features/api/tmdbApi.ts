@@ -12,20 +12,20 @@ export const tmdbApi = createApi({
     },
   }),
   endpoints: build => ({
-    fetchPopularMovies: build.query<TMDBMoviesResponse, number>({
+    fetchPopularMovies: build.query<TMDBMoviesResponse, number | void >({
       query: (page=1) => {
         return{
           url:`movie/popular?page=${page}`,
         }
       },
     }),
-    fetchTopRated: build.query<TMDBMoviesResponse, number>({
+    fetchTopRated: build.query<TMDBMoviesResponse, number | void>({
       query: (page=1) => `movie/top_rated?page=${page}`,
     }),
-    fetchUpcoming: build.query<TMDBUpcomingResponse, number>({
+    fetchUpcoming: build.query<TMDBUpcomingResponse, number | void>({
       query: (page=1) => `movie/upcoming?page=${page}`,
     }),
-    fetchNowPlaying: build.query<TMDBUpcomingResponse, number>({
+    fetchNowPlaying: build.query<TMDBUpcomingResponse, number | void>({
       query: (page=1) => `movie/now_playing?page=${page}`,
     }),
   }),
