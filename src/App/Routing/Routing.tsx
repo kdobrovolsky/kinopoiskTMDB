@@ -2,6 +2,7 @@
 import {CategoryMovies, Favorites, FilteredMovies, Main, Search} from "@/pages";
 import { Route, Routes } from "react-router-dom";
 import {NotFound} from "@/pages/NotFound/NotFound.tsx";
+import {MovieDetails} from "@/pages/MovieDetails/MovieDetails.tsx";
 
 export const Path = {
     Main: '/',
@@ -9,6 +10,7 @@ export const Path = {
     FilteredMovies: '/filtered',
     Search: '/search',
     Favorites: '/favorites',
+    MovieDetails: '/movie/:id',
     NotFound: '*',
 } as const
 
@@ -19,6 +21,7 @@ export const Routing = () => (
         <Route path={Path.FilteredMovies} element={<FilteredMovies />} />
         <Route path={Path.Search} element={<Search />} />
         <Route path={Path.Favorites} element={<Favorites />} />
+        <Route path={Path.MovieDetails} element={<MovieDetails />} />
         <Route path={Path.NotFound} element={<NotFound />} />
     </Routes>
 )

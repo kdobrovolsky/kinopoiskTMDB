@@ -80,3 +80,67 @@ export const categoriesTitle: Record<string, string> = {
   'upcoming': 'Upcoming Movies',
   'now-playing': 'Now Playing Movies'
 };
+
+// Тип для актера в фильме
+export type MovieCast = {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+// Тип для члена съемочной группы
+export type MovieCrew = {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  credit_id: string;
+  department: string;
+  job: string;
+}
+
+// Основной тип ответа для актеров и съемочной группы
+export type MovieCreditsResponse = {
+  id: number;
+  cast: MovieCast[];
+  crew: MovieCrew[];
+}
+
+// Тип для похожего фильма
+export type SimilarMovie = {
+  adult: boolean;
+  backdrop_path: string | null;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string | null;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+// Тип ответа для похожих фильмов
+export type SimilarMoviesResponse = {
+  page: number;
+  results: SimilarMovie[];
+  total_pages: number;
+  total_results: number;
+}

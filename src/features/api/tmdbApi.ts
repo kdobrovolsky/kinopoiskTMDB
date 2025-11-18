@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type {SearchMoviesParams, TMDBMoviesResponse, TMDBUpcomingResponse} from "@/features/api/tmdbApi.types.ts";
+import type {
+  MovieCreditsResponse,
+  SearchMoviesParams,
+  TMDBMoviesResponse,
+  TMDBUpcomingResponse
+} from "@/features/api/tmdbApi.types.ts";
 
 export const tmdbApi = createApi({
   reducerPath: 'tmdbApi',
@@ -35,6 +40,12 @@ export const tmdbApi = createApi({
           params
         }
       }
+    }),
+    fetchCredits: build.query<MovieCreditsResponse, number>({
+      query: (movie_id) => `movie/${movie_id}/credits`,
+    }),
+    fetchSimilar: build.query<MovieCreditsResponse, number>({
+      query: (movie_id) => `movie/${movie_id}/similar`,
     }),
   }),
 });

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Path } from '@/common/Routing/Routing';
+import { Path } from '@/App/Routing/Routing';
 import s from './NotFound.module.css';
 
 export const NotFound = () => {

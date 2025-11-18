@@ -1,4 +1,4 @@
-import {Path} from '@/common/Routing/Routing.tsx';
+import {Path} from '@/App/Routing/Routing.tsx';
 import s from './Header.module.css';
 import {NavLink} from 'react-router-dom';
 import {TMDBLogo} from '@/widgets/Header/logo/TMDBLOGO.tsx';

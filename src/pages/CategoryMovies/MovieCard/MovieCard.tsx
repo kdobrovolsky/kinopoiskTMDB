@@ -1,6 +1,7 @@
 import s from "@/pages/CategoryMovies/CategoryMovies.module.css";
 import {RATING_THRESHOLDS, useFavorites} from "@/shared";
 import type {FavoriteMovie, TMDBMovie, TMDBMoviesResponse} from "@/features/api/tmdbApi.types.ts";
+import {useNavigate} from "react-router-dom";
 
 type PropsMovieCard = {
     data?: TMDBMoviesResponse | undefined
@@ -12,7 +13,7 @@ type PropsMovieCard = {
 export const MovieCard = ({data,limit,className}:PropsMovieCard) => {
     const displayedMovies  = limit ? data?.results.slice(0, limit) : data?.results;
     const {isFavorite, addFavorite, removeFavorite} = useFavorites();
-
+    const navigate = useNavigate();
     const handleFavoriteClick = (movie: TMDBMovie) => {
     if(isFavorite(movie.id)) {
         removeFavorite(movie.id);
@@ -25,24 +26,30 @@ export const MovieCard = ({data,limit,className}:PropsMovieCard) => {
         });
     }
     }
+
+
     return(
         <div className={className ? className : s.moviesGrid}>
             {displayedMovies?.map((movie) => (
-                <article key={movie.id} className={s.movieCard}>
-                    {movie.poster_path ? (
-                        <img
-                            src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                            alt={movie.title}
-                            className={s.moviePoster}
-                            loading="lazy"
+                <article key={movie.id} className={s.movieCard} >
+                    {<div onClick={()=>navigate(`/movie/${movie.id}`)}>
+                        {
+                            movie.poster_path ? (
+                                <img
+                                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                                    alt={movie.title}
+                                    className={s.moviePoster}
+                                    loading="lazy"
 
-                        />
+                                />
 
-                    ) : (
-                        <div className={s.posterPlaceholder}>
-                            No Image
-                        </div>
-                    )}
+                            ) : (
+                                <div className={s.posterPlaceholder}>
+                                    No Image
+                                </div>
+                            )
+                        }
+                    </div>}
                     <button
                         onClick={() => handleFavoriteClick(movie)}
                         className={`${s.favoriteButton} ${isFavorite(movie.id) ? s.active : ''}`}
