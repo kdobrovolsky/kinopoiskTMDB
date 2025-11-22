@@ -1,0 +1,16 @@
+.filterGroup {
+    margin-bottom: 24px;
+}
+
+.filterTitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #000;
+}
+
+.ratingValue {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}

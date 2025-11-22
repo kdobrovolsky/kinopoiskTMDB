@@ -1,29 +1,24 @@
-import s from '/src/pages/Main/Main.module.css'
-import {useNavigate} from "react-router-dom";
-import {useFetchTopRatedQuery} from "@/features/api/tmdbApi.ts";
-import {MovieCard} from "@/pages/CategoryMovies/MovieCard/MovieCard.tsx";
-
+import s from '/src/pages/Main/Main.module.css';
+import { useNavigate } from 'react-router-dom';
+import { useFetchTopRatedQuery } from '@/features/api/tmdbApi.ts';
+import { MovieCard } from '@/entities/movie/ui/MovieCard/MovieCard.tsx';
 
 export const TopRatedMovies = () => {
+  const { data } = useFetchTopRatedQuery();
+  const navigate = useNavigate();
+  const handleViewMore = () => {
+    navigate('/category/topRated');
+  };
+  return (
+    <section className={s.mainContent}>
+      <div className={s.sectionHeader}>
+        <h2 className={s.sectionTitle}>Top Rated Movies</h2>
+        <button className={s.viewMoreButton} onClick={handleViewMore}>
+          View More
+        </button>
+      </div>
 
-    const {data} = useFetchTopRatedQuery()
-    const navigate = useNavigate();
-    const handleViewMore = () => {
-        navigate('/category/topRated');
-    };
-    return (
-        <section className={s.mainContent}>
-            <div className={s.sectionHeader}>
-                <h2 className={s.sectionTitle}>Top Rated Movies</h2>
-                <button
-                    className={s.viewMoreButton}
-                    onClick={handleViewMore}
-                >
-                    View More
-                </button>
-            </div>
-
-            <MovieCard data={data} className={s.moviesGrid} limit={6} />
-        </section>
-    )
-}
+      <MovieCard data={data} className={s.moviesGrid} limit={6} />
+    </section>
+  );
+};

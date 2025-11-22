@@ -1,20 +1,20 @@
-import '@/App.css'
-import { Header } from "@/widgets/Header/Header.tsx";
-import { Routing } from "@/App/Routing/Routing.tsx";
-import { ThemeProvider } from "@/common/components/theme/themeProvider/themeProvider.tsx";
-import { Footer } from "@/widgets/footer/Footer.tsx";
+import '@/App.css';
+import { Header } from '@/widgets/Header/Header.tsx';
+import { Routing } from '@/App/Routing/Routing.tsx';
+import { Footer } from '@/widgets/footer/Footer.tsx';
 import s from './App.module.css';
+import { ThemeProvider } from '@/common/components/theme';
 
 export const App = () => {
-    return (
-        <ThemeProvider>
-            <div className={s.app}>
-                <Header/>
-                <main className={s.main}>
-                    <Routing/>
-                </main>
-                <Footer/>
-            </div>
-        </ThemeProvider>
-    )
-}
+  return (
+    <ThemeProvider>
+      <div className={s.app}>
+        <Header />
+        <main className={s.main}>
+          <Routing />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
+  );
+};
