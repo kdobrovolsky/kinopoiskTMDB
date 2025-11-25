@@ -1,6 +1,6 @@
 /* widgets/header/Header.module.css */
 .container {
-    background-color: #032541;
+    background-color: var( --header-bg);
     padding: 0 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -44,7 +44,7 @@
 }
 
 .list li a {
-    color: white;
+    color: #01b4e4;
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 4px;

@@ -5,7 +5,3 @@
     flex-direction: column;
 }
 
-.main {
-    flex: 1 0 auto; /* Занимает все доступное пространство */
-    padding: 2rem 0;
-}

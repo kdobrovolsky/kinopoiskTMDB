@@ -3,7 +3,6 @@
     background: var(--bg-primary);
 }
 
-/* Welcome Section */
 .welcomeSection {
     background-size: cover;
     background-position: center;
@@ -45,7 +44,6 @@
     text-align: center;
     color: white;
     max-width: 600px;
-    padding: 0 2rem;
 }
 
 .title {
@@ -88,7 +86,7 @@
 .viewMoreButton {
     padding: 0.35rem 1.5rem;
     background: rgba(255, 255, 255, 0.1);
-    color: var(--accent-color);
+    color: var(--accent-hover);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     font-weight: 500;
