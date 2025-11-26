@@ -7,8 +7,8 @@ export const CategorySkeleton = () => {
     <SkeletonTheme baseColor='#f0f0f0' highlightColor='#e0e0e0'>
       <div className={s.skeletonContainer}>
         <div className={s.navigationSkeleton}>
-          {Array.from({ length: 3 }).map((_, index) => (
-            <Skeleton key={index} className={s.navButtonSkeleton} width={100} />
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Skeleton key={index} className={s.navButtonSkeleton} width={130} />
           ))}
         </div>
 

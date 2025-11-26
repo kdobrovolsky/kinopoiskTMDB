@@ -44,10 +44,10 @@ input, button, textarea, select {
   --text-secondary: #495057;       /* Вторичный цвет текста */
   --header-bg: #032541;            /* Фон хедера */
   --accent-color: #01b4e4;         /* Акцентный цвет (кнопки, ссылки) */
-  --accent-hover: #0099c3;         /* Акцентный цвет при наведении */
-  --border-color: #dee2e6;         /* Цвет границ */
+  --accent-hover: rgba(100, 210, 255, 0.15);         /* Акцентный цвет при наведении */
+  --border-color: rgba(100, 210, 255, 0.4);         /* Цвет границ */
   --input-bg: #ffffff;             /* Фон инпутов */
-  --movieCard-bg: #90a0ab;
+  --movieCard-bg: #6e7b86;
 
   /* Тени */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);   /* Маленькая тень */
@@ -68,9 +68,9 @@ input, button, textarea, select {
   --text-primary: #ffffff;         /* Светлый текст */
   --text-secondary: #e8e8e8;       /* Светлый вторичный текст */
   --header-bg: #092f54;            /* Темный фон хедера */
-  --accent-color: #90cea1;         /* Зеленый акцент для темной темы */
+  --accent-color: rgba(33, 150, 243, 0.15);         /* Зеленый акцент для темной темы */
   --accent-hover: #7bbd8d;         /* Зеленый акцент при наведении */
-  --border-color: #2d4263;         /* Темные границы */
+  --border-color: rgba(33, 150, 243, 0.3);         /* Темные границы */
   --input-bg: #1c2e44;             /* Темный фон инпутов */
   --movieCard-bg: #435370;
 }
