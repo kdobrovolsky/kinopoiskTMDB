@@ -2,7 +2,7 @@
 
 A modern movie discovery app built with **React**, **TypeScript**, **RTK Query**, and **Feature-Sliced Design**, styled with **CSS Modules** and deployed to **Vercel**.
 
-👉 **Live Demo:** https://pet-project-kinopoisk.vercel.app/
+👉 **Live Demo:** [https://pet-project-kinopoisk.vercel.app/](https://kinopoisk-tmdb-git-main-kdobrovolskys-projects.vercel.app)
 
 ---
 
