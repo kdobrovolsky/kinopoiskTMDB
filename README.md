@@ -2,7 +2,8 @@
 
 A modern movie discovery app built with **React**, **TypeScript**, **RTK Query**, and **Feature-Sliced Design**, styled with **CSS Modules** and deployed to **Vercel**.
 
-👉 **Live Demo:** [https://pet-project-kinopoisk.vercel.app/](https://kinopoisk-tmdb-git-main-kdobrovolskys-projects.vercel.app)
+👉 **Live Demo:**  
+https://pet-project-kinopoisk.vercel.app/
 
 ---
 
@@ -16,30 +17,53 @@ A modern movie discovery app built with **React**, **TypeScript**, **RTK Query**
 - 💡 Light / Dark mode  
 - ⚡ Skeleton loading states  
 - 🚀 Super-fast API requests via RTK Query  
+- 🎞 Pagination, loading states and error handling  
+- 📦 Clean architecture via FSD  
 
 ---
 
 ## 🛠 Tech Stack
 
-- **React 19 + TypeScript**
-- **Redux Toolkit (Slices + RTK Query)**
+### **Core**
+- **React 19**
+- **TypeScript**
 - **React Router v7**
+- **Redux Toolkit**
+- **RTK Query**
+
+### **Styling**
 - **CSS Modules**
+- **Adaptive / Responsive layout**
+- **Skeleton loading**
+
+### **Architecture**
 - **Feature-Sliced Design (FSD)**
+- Entities, Features, Widgets, Pages, Shared
+
+### **Tooling**
+- **Vite**
 - **Prettier**
+- **ESLint**
+- **pnpm**
 - **Vercel Deployment**
+
+### **Other libraries**
+- **React Hook Form**
+- **React Toastify**
+- **React Loading Skeleton**
+- **MUI (partial usage)**
 
 ---
 
 ## 🧱 Project Architecture (FSD)
 
 src/
-├── app/ # App initialization, providers
+├── app/ # App initialization, router, providers
 ├── pages/ # Route-level pages
-├── widgets/ # Layout-level UI blocks (Header, FilterPanel)
-├── features/ # User interactions (filters, search, sorting)
-├── entities/ # Domain entities (Movie, Genre)
-└── shared/ # UI components, helpers, config, styles
+├── widgets/ # UI blocks (Header, FilterPanel, Footer, etc.)
+├── features/ # Logic of user interactions (filters, sorting)
+├── entities/ # Business entities (Movie, Genre)
+└── shared/ # UI components, helpers, API, config
 
 ---
 
